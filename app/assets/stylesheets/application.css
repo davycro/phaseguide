@@ -13,3 +13,56 @@
  *= require_tree .
  *= require_self
  */
+
+.schedule_table_header {
+  font-weight: bold;
+  text-align: center;
+}
+.week_number_big {
+  padding-top: 8px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #666666;
+  text-align: center;
+}
+.week_date_range {
+  font-size: 8px;
+  text-align: center;
+}
+.week_dose_count {
+  font-size: 10px;
+  text-align: center;
+}
+.week_col {
+  /*height: 115px;*/
+  padding-bottom: 8px;
+  background: #f2f2f2;
+  border: 1px solid #bbb;
+}
+.day_col {
+  /*height: 115px;*/
+  padding-bottom: 8px;
+  background: #f2f2f2;
+  border-color: #bbb;
+  border-style: solid;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 0px;
+}
+.no_symbol {
+  color: #f2f2f2;
+}
+.week_row {
+  margin-bottom: 8px;
+}
+.day_dose_count {
+  padding-top: 8px;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+}
+.day_date {
+  text-align: center;
+  font-size: 10px;
+}
