@@ -1,5 +1,5 @@
-<tr>
-  <td>
+<div class="row">
+  <div class="col-md-1">
     <div class="week_number_big">
       <%= n %>
     </div>
@@ -10,9 +10,9 @@
     <div class="week_dose_count">
       <%= week.dose_count %>
     </div>
-  </td>
+  </div>
 
   <%- week.days.each do |day| -%>
-    <td><%= day.date %> / <%= day.dose_count %></td>
+    <div class="col-md-1"><%= day.date %> / <%= day.dose_count %></div>
   <% end -%>
-</tr>
+</div>
