@@ -1,4 +1,16 @@
 <h1>Pages#index</h1>
-<p>
-  Start Date: <%= @schedule.start_date %>
-</p>
+
+<table>
+
+  <%= render :partial => 'week_row', :locals => {:week => @schedule.week1, :n => 1} %>
+  <%= render :partial => 'week_row', :locals => {:week => @schedule.week2, :n => 2} %>
+  <%= render :partial => 'week_row', :locals => {:week => @schedule.week3, :n => 3} %>
+  <%= render :partial => 'week_row', :locals => {:week => @schedule.week4, :n => 4} %>
+  <%= render :partial => 'week_row', :locals => {:week => @schedule.week5, :n => 5} %>
+  <%= render :partial => 'week_row', :locals => {:week => @schedule.week6, :n => 6} %>
+  <%= render :partial => 'week_row', :locals => {:week => @schedule.week7, :n => 7} %>
+  <%= render :partial => 'week_row', :locals => {:week => @schedule.week8, :n => 8} %>
+
+
+</table>
+

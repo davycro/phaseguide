@@ -1,0 +1,18 @@
+<tr>
+  <td>
+    <div class="week_number_big">
+      <%= n %>
+    </div>
+    <div class="week_date_range">
+      <%= week.days.first.date.to_formatted_s(:short) %> - 
+      <%= week.days.last.date.to_formatted_s(:short) %>
+    </div>
+    <div class="week_dose_count">
+      <%= week.dose_count %>
+    </div>
+  </td>
+
+  <%- week.days.each do |day| -%>
+    <td><%= day.date %> / <%= day.dose_count %></td>
+  <% end -%>
+</tr>
