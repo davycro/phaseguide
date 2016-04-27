@@ -1,28 +1,38 @@
 class Schedule
   attr_accessor :start_date
-  attr_accessor :week1
-  attr_accessor :week2
-  attr_accessor :week3
-  attr_accessor :week4
-  attr_accessor :week5
-  attr_accessor :week6
-  attr_accessor :week7
-  attr_accessor :week8
+  attr_accessor :weeks
 
   def initialize(start_date)
     @start_date = start_date
-    @week1 = SevenDoseWeek.new(@start_date)
-    @week2 = SevenDoseWeek.new(@week1.last_day+1.day)
-    @week3 = ThreeDoseWeek.new(@week2.last_day+1.day)
-    @week4 = ThreeDoseWeek.new(@week3.last_day+1.day)
-    @week5 = ThreeDoseWeek.new(@week4.last_day+1.day)
-    @week6 = ThreeDoseWeek.new(@week5.last_day+1.day)
-    @week7 = ThreeDoseWeek.new(@week6.last_day+1.day)
-    @week8 = ThreeDoseWeek.new(@week7.last_day+1.day)
+    @weeks = []
+
+    # first 2 weeks
+    2.times do
+      @weeks << SevenDoseWeek.new(self.last_date+1.day)
+    end
+
+    # remaining 6 weeks are MWF doses
+    6.times do
+      @weeks << ThreeDoseWeek.new(self.last_date+1.day)
+    end
+
+    # additional missed doses added here
   end
 
-  def weeks
-    [@week1, @week2, @week3, @week4, @week5, @week6, @week7, @week8]
+  def last_date
+    if weeks.blank?
+      return @start_date
+    else
+      return weeks.last.days.last.date
+    end
+  end
+
+  def first_date
+    if weeks.blank?
+      return @start_date
+    else
+      return weeks.first.days.first.date
+    end
   end
 
   def days

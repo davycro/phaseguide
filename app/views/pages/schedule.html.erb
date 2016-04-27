@@ -5,8 +5,8 @@
   </div>
 
   <p>
-    Initial phase: <%= @schedule.week1.days.first.date.to_formatted_s(:weekday_and_mdy) %> to 
-    <%= @schedule.week8.days.last.date.to_formatted_s(:weekday_and_mdy) %>
+    Initial phase: <%= @schedule.first_date.to_formatted_s(:weekday_and_mdy) %> to 
+    <%= @schedule.last_date.to_formatted_s(:weekday_and_mdy) %>
     <br>
     Today is day: <%= @schedule.day_count_today %> of <%= @schedule.days.count %>
     <br>
@@ -18,19 +18,14 @@
     <div class="col-md-1">
       Week
     </div>
-    <%- @schedule.week1.days.each do |day| -%>
+    <%- @schedule.weeks.first.days.each do |day| -%>
       <div class="col-md-1"><%= day.date.strftime("%a") %></div>
     <% end -%>
   </div>
 
-  <%= render :partial => 'week_row', :locals => {:week => @schedule.week1, :n => 1} %>
-  <%= render :partial => 'week_row', :locals => {:week => @schedule.week2, :n => 2} %>
-  <%= render :partial => 'week_row', :locals => {:week => @schedule.week3, :n => 3} %>
-  <%= render :partial => 'week_row', :locals => {:week => @schedule.week4, :n => 4} %>
-  <%= render :partial => 'week_row', :locals => {:week => @schedule.week5, :n => 5} %>
-  <%= render :partial => 'week_row', :locals => {:week => @schedule.week6, :n => 6} %>
-  <%= render :partial => 'week_row', :locals => {:week => @schedule.week7, :n => 7} %>
-  <%= render :partial => 'week_row', :locals => {:week => @schedule.week8, :n => 8} %>
+  <%- @schedule.weeks.each_with_index do |week, index| -%>
+    <%= render :partial => 'week_row', :locals => {:week => week, :n => index+1} %>  
+  <% end -%>
 
 </div>
 
