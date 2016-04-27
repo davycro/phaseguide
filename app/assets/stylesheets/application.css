@@ -34,14 +34,12 @@
   text-align: center;
 }
 .week_col {
-  /*height: 115px;*/
-  padding-bottom: 8px;
+  height: 115px;
   background: #f2f2f2;
   border: 1px solid #bbb;
 }
 .day_col {
-  /*height: 115px;*/
-  padding-bottom: 8px;
+  height: 115px;
   background: #f2f2f2;
   border-color: #bbb;
   border-style: solid;
@@ -50,19 +48,21 @@
   border-bottom-width: 1px;
   border-left-width: 0px;
 }
-.no_symbol {
-  color: #f2f2f2;
-}
 .week_row {
   margin-bottom: 8px;
 }
-.day_dose_count {
-  padding-top: 8px;
-  font-size: 36px;
-  font-weight: bold;
-  text-align: center;
-}
 .day_date {
   text-align: center;
+  font-size: 12px;
+  padding-top: 16px;
+  padding-bottom: 8px;
+}
+.highlight_day {
   font-size: 10px;
+  text-align: center;
+}
+.no_dose_day {
+  font-size: 10px;
+  text-align: center;
+  color: #999999;
 }

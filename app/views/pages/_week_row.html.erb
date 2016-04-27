@@ -10,24 +10,18 @@
 
   <%- week.days.each do |day| -%>
     <div class="col-md-1 day_col">
+      <div class="day_date">
+        <%= day.date.to_formatted_s(:short) %>
+      </div>
       <%- if day.dose_count > 0 -%>
         <div class="highlight_day">
-          <div class="day_dose_count">
-            <span class="glyphicon glyphicon-record"></span>
-          </div>
-          <div class="day_date">
-            <%= day.date.to_formatted_s(:short) %>
-          </div>
+          <div class="bg-success">RIF</div>
+          <div class="bg-info">INH</div>
+          <div class="bg-warning">PZA</div>
+          <div class="bg-danger">EMB</div>
         </div>
-      <% else %>
-        <div class="">
-          <div class="day_dose_count no_symbol">
-           -
-          </div>
-          <div class="day_date">
-            <%= day.date.to_formatted_s(:short) %>
-          </div>
-        </div>
+      <% else -%>
+        <div class="no_dose_day">No medications due</div>
       <% end -%>
     </div>
   <% end -%>
