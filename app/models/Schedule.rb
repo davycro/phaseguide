@@ -11,14 +11,14 @@ class Schedule
 
   def initialize(start_date)
     @start_date = start_date
-    @week1 = ScheduleWeek.new(@start_date, 7)
-    @week2 = ScheduleWeek.new(@week1.last_day+1.day, 7)
-    @week3 = ScheduleWeek.new(@week2.last_day+1.day, 3)
-    @week4 = ScheduleWeek.new(@week3.last_day+1.day, 3)
-    @week5 = ScheduleWeek.new(@week4.last_day+1.day, 3)
-    @week6 = ScheduleWeek.new(@week5.last_day+1.day, 3)
-    @week7 = ScheduleWeek.new(@week6.last_day+1.day, 3)
-    @week8 = ScheduleWeek.new(@week7.last_day+1.day, 3)
+    @week1 = SevenDoseWeek.new(@start_date)
+    @week2 = SevenDoseWeek.new(@week1.last_day+1.day)
+    @week3 = ThreeDoseWeek.new(@week2.last_day+1.day)
+    @week4 = ThreeDoseWeek.new(@week3.last_day+1.day)
+    @week5 = ThreeDoseWeek.new(@week4.last_day+1.day)
+    @week6 = ThreeDoseWeek.new(@week5.last_day+1.day)
+    @week7 = ThreeDoseWeek.new(@week6.last_day+1.day)
+    @week8 = ThreeDoseWeek.new(@week7.last_day+1.day)
   end
 
   def weeks
