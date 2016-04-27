@@ -4,6 +4,16 @@
     <h1>R.I.P.E. Medication Schedule</h1>
   </div>
 
+  <p>
+    Initial phase: <%= @schedule.week1.days.first.date.to_formatted_s(:weekday_and_mdy) %> to 
+    <%= @schedule.week8.days.last.date.to_formatted_s(:weekday_and_mdy) %>
+    <br>
+    Today is day: <%= @schedule.day_count_today %> of <%= @schedule.days.count %>
+    <br>
+    The patient has taken <%= @schedule.dose_count_today %> doses out of <%= @schedule.dose_count %>
+    <br>
+  </p>
+
   <div class="row schedule_table_header">
     <div class="col-md-1">
       Week

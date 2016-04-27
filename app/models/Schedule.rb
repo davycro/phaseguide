@@ -21,4 +21,40 @@ class Schedule
     @week8 = ScheduleWeek.new(@week7.last_day+1.day, 3)
   end
 
+  def weeks
+    [@week1, @week2, @week3, @week4, @week5, @week6, @week7, @week8]
+  end
+
+  def days
+    weeks.map { |w| w.days }.flatten
+  end
+
+  def dose_count
+    weeks.map { |w| w.dose_count }.sum
+  end
+
+  def dose_count_today
+    dc = 0
+    stop_date = Date.today
+    days.each do |day|
+      dc += day.dose_count
+      if day.date > stop_date
+        return dc
+      end
+    end
+    return dc
+  end
+
+  def day_count_today
+    dc = 0
+    stop_date = Date.today
+    days.each do |day|
+      dc += 1
+      if day.date > stop_date
+        return dc
+      end
+    end
+    return dc
+  end
+
 end
