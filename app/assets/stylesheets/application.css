@@ -48,6 +48,11 @@
   border-bottom-width: 1px;
   border-left-width: 0px;
 }
+.hover_col {
+  background: #666666;
+  color: white;
+  cursor: pointer;
+}
 .week_row {
   margin-bottom: 8px;
 }
