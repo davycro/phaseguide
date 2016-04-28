@@ -1,0 +1,2 @@
+class CatchupDay < Day
+end

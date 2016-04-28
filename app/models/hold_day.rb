@@ -1,0 +1,2 @@
+class HoldDay < Day
+end

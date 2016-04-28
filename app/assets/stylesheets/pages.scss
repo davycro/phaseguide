@@ -1,3 +1,57 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$col-width: 75px;
+$col-height: 120px;
+$col-count: 8;
+
+.week {
+  width: ($col-width + 2px)*$col-count;
+  height: $col-height;
+}
+
+.CatchupWeek {
+  display: none;
+}
+.active {
+  display: block;
+}
+.inactive {
+  display: none;
+}
+.day {
+  width: $col-width;
+  height: $col-height;
+  float: left;
+  border: 1px solid #aaaaaa;
+}
+
+.week_label {
+  width: $col-width;
+  height: $col-height;
+  float: left;  
+}
+
+.HoldDay p {
+  font-size: 10px;
+}
+
+.MedicationDay label {
+  display: block;
+}
+
+.MedicationDay.hover, .CatchupDay.hover {
+  background: #333333;
+  color: white;
+  cursor: pointer
+}
+.MedicationDay .missed_dose_text, .CatchupDay .missed_dose_text {
+  display: none;
+}
+.MedicationDay.missed, .CatchupDay.missed {
+  .missed_dose_text {
+    display: block;
+  }
+}

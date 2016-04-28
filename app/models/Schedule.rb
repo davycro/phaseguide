@@ -1,10 +1,12 @@
 class Schedule
   attr_accessor :start_date
   attr_accessor :weeks
+  attr_accessor :catchup_weeks
 
   def initialize(start_date)
     @start_date = start_date
     @weeks = []
+    @catchup_weeks = []
 
     # first 2 weeks
     2.times do
@@ -16,7 +18,10 @@ class Schedule
       @weeks << ThreeDoseWeek.new(self.last_date+1.day)
     end
 
-    # additional missed doses added here
+    # add option for 4 weeks of catchup doses
+    4.times do |i|
+      @catchup_weeks << CatchupWeek.new(self.last_date+1.day+(i*7).days)
+    end
   end
 
   def last_date
@@ -33,6 +38,10 @@ class Schedule
     else
       return weeks.first.days.first.date
     end
+  end
+
+  def medication_days
+    days.select { |d| d.class==MedicationDay }
   end
 
   def days

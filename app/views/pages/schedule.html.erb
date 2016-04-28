@@ -6,7 +6,7 @@
 
   <p>
     Initial phase: <%= @schedule.first_date.to_formatted_s(:weekday_and_mdy) %> to 
-    <%= @schedule.last_date.to_formatted_s(:weekday_and_mdy) %>
+    <%= @schedule.medication_days.last.date.to_formatted_s(:weekday_and_mdy) %>
     <br>
     Today is day: <%= @schedule.day_count_today %> of <%= @schedule.days.count %>
     <br>
@@ -14,18 +14,56 @@
     <br>
   </p>
 
-  <div class="row schedule_table_header">
-    <div class="col-md-1">
-      Week
-    </div>
-    <%- @schedule.weeks.first.days.each do |day| -%>
-      <div class="col-md-1"><%= day.date.strftime("%a") %></div>
+
+  <div class="Schedule">
+    <%- @schedule.weeks.each_with_index do |week, index| -%>
+      <div class="<%= week.class %> week">
+        <div class="week_label">
+          Week #<%= index+1 %>
+        </div>
+        <%- week.days.each do |day| -%>
+          <div class="<%= day.class %> day">
+            <%= day.date.to_formatted_s(:short) %>
+
+            <%- if day.class==MedicationDay %>
+              <div class="dose_taken_text">
+                <label class='label label-primary'>Take Meds</label>
+              </div>
+              <div class="missed_dose_text">MISSED!</div>
+            <% end -%>
+
+            <%- if day.class==HoldDay %>
+              <p>Hold</p>
+            <% end -%>
+          </div>
+        <% end -%>
+      </div>
+    <% end -%>
+
+    <%- @schedule.catchup_weeks.each_with_index do |week, index| -%>
+      <div class="<%= week.class %> week">
+        <div class="week_label">
+          Makeup Week #<%= index+1 %>
+        </div>
+        <%- week.days.each do |day| -%>
+          <div class="<%= day.class %> day inactive">
+            <%= day.date.to_formatted_s(:short) %>
+
+            <%- if day.class==CatchupDay -%>
+              <div class="dose_taken_text">
+                <label class='label label-info'>Makeup</label>
+              </div>
+              <div class="missed_dose_text">MISSED!</div>
+            <% end -%>
+
+            <%- if day.class==HoldDay %>
+              <p>Hold</p>
+            <% end -%>
+          </div>
+        <% end -%>
+      </div>
     <% end -%>
   </div>
-
-  <%- @schedule.weeks.each_with_index do |week, index| -%>
-    <%= render :partial => 'week_row', :locals => {:week => week, :n => index+1} %>  
-  <% end -%>
 
 </div>
 
