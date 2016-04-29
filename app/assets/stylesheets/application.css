@@ -14,3 +14,27 @@
  *= require_self
  */
 
+/* Underscores used for style text; dashes are bootstrap; camelcase is rails */
+
+body {
+  background: #F5F5EB;
+}
+
+.page_header {
+  background: white;
+  padding: 12px;
+}
+
+.page_body {
+  padding-top: 24px;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  background: #8F4C5B;
+  border-radius: 0px;
+}
+
+a, a:hover {
+  color: #8F4C5B;
+}
+
