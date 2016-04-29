@@ -26,7 +26,7 @@ class Schedule
 
   def last_date
     if weeks.blank?
-      return @start_date
+      return @start_date-1.day
     else
       return weeks.last.days.last.date
     end

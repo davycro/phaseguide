@@ -49,7 +49,7 @@ class MedicationDayController extends Spine.Module
         if $('.CatchupDay.inactive').length==0
           alert "Cannot miss anymore days, please restart phase"
           return
-          
+
         $(e.currentTarget).addClass 'missed'
         @scheduleController.addMissedDose();
       else
@@ -57,9 +57,29 @@ class MedicationDayController extends Spine.Module
         @scheduleController.removeMissedDose();
 
 
+class StartDateSelector
+
+  constructor: ->
+    @el = $('.StartDateSelector')
+    $(@el, 'select').on 'change', (e) =>
+      @update()
+
+  update: ->
+    window.location = "?start_date=#{@getDateString()}";
+
+  getDateString: ->
+    y = $("select#date_year option:selected").val()
+    m = $("#date_month option:selected").val()
+    d = $("#date_day option:selected").val()
+    str = "#{y}-#{m}-#{d}"
+    console.log str
+    str
+
+
 ready = ->
   @scheduleController = new ScheduleController()
   @medicationDayController = new MedicationDayController(@scheduleController)
+  @startDateSelector = new StartDateSelector()
 
 
 $(document).ready(ready)

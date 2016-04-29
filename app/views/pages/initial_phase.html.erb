@@ -1,20 +1,15 @@
-
-
-
-
-
 <div class="container">
 
-  <p>
-    Initial phase: <%= @schedule.first_date.to_formatted_s(:weekday_and_mdy) %> to 
-    <%= @schedule.medication_days.last.date.to_formatted_s(:weekday_and_mdy) %>
-    <br>
-    Today is day: <%= @schedule.day_count_today %> of <%= @schedule.days.count %>
-    <br>
-    The patient has taken <%= @schedule.dose_count_today %> doses out of <%= @schedule.dose_count %>
-    <br>
-  </p>
+  <div class="schedule_header">
 
+    <div class="StartDateSelector">
+      <label>Start Date:</label>
+      <%= select_date(@start_date, order: [:month, :day, :year]) %>
+    </div>
+    Phase ends on:
+    Today is day 15 of 56; and dose 3 of 32. The patient has missed 12 doses.
+    
+  </div>
 
   <div class="Schedule">
     <%- @schedule.weeks.each_with_index do |week, index| -%>

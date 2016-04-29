@@ -4,10 +4,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'pages#new'
+  root 'pages#initial_phase'
 
-  get 'new' => 'pages#new'
-  get 'schedule' => 'pages#schedule'
+  get 'initial_phase' => 'pages#initial_phase'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
