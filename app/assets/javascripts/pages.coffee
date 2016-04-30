@@ -23,6 +23,7 @@ class ScheduleController extends Spine.Module
     # hide all days after catchupday
     $(sibs).removeClass('active').addClass('inactive')
     @missedDoseCount += 1
+    @updateStopDateText(); # must come after increment
 
   removeMissedDose: ->
     day = $('.CatchupDay.active:last');
@@ -31,6 +32,16 @@ class ScheduleController extends Spine.Module
     $('.CatchupDay.active:last ~ .day').addClass('inactive').removeClass('active')
     if day.siblings('.active').length==0
       day.parent().removeClass('active')
+    @missedDoseCount -= 1
+    @updateStopDateText();
+
+  updateStopDateText: ->
+    # get last date
+    if @missedDoseCount >= 1
+      d = $('.CatchupDay.active:last').attr('data-date');
+    else
+      d = $('.MedicationDay:last').attr('data-date');
+    $('.stop_date_text').html("#{d}")
 
 class MedicationDayController extends Spine.Module
   @extend(Spine.Events)

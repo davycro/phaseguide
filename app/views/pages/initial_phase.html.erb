@@ -7,6 +7,7 @@
       <%= select_date(@start_date, order: [:month, :day, :year]) %>
     </div>
     Phase ends on:
+    <span class="stop_date_text"><%= @schedule.last_date.to_formatted_s(:weekday_and_mdy) %></span>.
     Today is day 15 of 56; and dose 3 of 32. The patient has missed 12 doses.
     
   </div>
