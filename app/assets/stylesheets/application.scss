@@ -1,0 +1,168 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/* Underscores used for style text; dashes are bootstrap; camelcase is rails */
+
+@import "bootstrap";
+
+$purple-page-header: #8F4C5B;
+
+.page_header {
+  background: $purple-page-header;
+  padding: 12px;
+
+  .nav-pills {
+    > li {
+      float: left;
+      border-top: 2px solid white;
+
+      // Links rendered as pills
+      > a {
+        border-radius: 0px;
+      }
+      + li {
+        margin-left: 2px;
+      }
+
+      // Active state
+      &.active > a {
+        &,
+        &:hover,
+        &:focus {
+          color: white;
+          background: $purple-page-header; 
+        }
+      }
+    }
+  }
+
+}
+
+.page_body {
+  padding-top: 24px;
+}
+
+
+a, a:hover {
+  color: #8F4C5B;
+}
+
+$col-width: 100px;
+$col-height: 75px;
+$col-count: 8;
+
+.schedule_header {
+  margin-bottom: 12px;
+}
+
+
+.week {
+  @include clearfix;
+  margin-bottom: 24px;
+}
+.CatchupWeek {
+  display: none;
+}
+.active {
+  display: block;
+}
+.inactive {
+  display: none;
+}
+.day {
+  width: $col-width;
+  padding-right: 8px;
+  float: left;
+}
+
+.week_label {
+  width: $col-width;
+  height: $col-height;
+  float: left;
+  font-size: 14px;
+  font-weight: bold;
+  color: #444444;
+  padding-right: 12px;  
+}
+
+.day_label {
+  font-size: 14px;
+  // font-weight: bold;
+  color: #222222;
+  margin-bottom: 6px;
+}
+.dose {
+  padding: 6px;
+  padding-bottom: 12px;
+
+  background: white;
+
+  .dose_label {
+    font-weight: bold;
+    margin-bottom: 3px;
+    font-size: 11px;
+  }
+  .dose_status {
+    font-style: italic;
+    font-size: 10px;
+    margin-bottom: 3px;
+  }
+  .dose_contents {
+    font-size: 8px;
+    color: #666666;
+  }
+}
+
+.dose_empty {
+  // border: 1px solid #aaa;
+  font-size: 10px;
+  // padding: 6px;
+  color: #666666;
+}
+
+.MedicationDay {
+}
+
+.MedicationDay label {
+  display: block;
+}
+
+.MedicationDay.hover, .CatchupDay.hover {
+
+  .dose {
+    background: #8F4C5B;
+    color: white;
+    .dose_contents {
+      color: white;
+    }
+  }
+
+  // background: #333333;
+  // color: white;
+  cursor: pointer
+}
+.MedicationDay .missed_dose_text, .CatchupDay .missed_dose_text {
+  display: none;
+}
+.MedicationDay.missed, .CatchupDay.missed {
+  .missed_dose_text {
+    display: block;
+    color: #CF2458;
+  }
+  .dose_taken_text {
+    display: none;
+  }
+}
