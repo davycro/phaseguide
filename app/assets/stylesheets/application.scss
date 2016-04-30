@@ -138,6 +138,10 @@ $col-count: 8;
   }
 }
 
+.future_day .dose {
+  background: white;
+}
+
 .dose_empty {
   // border: 1px solid #aaa;
   font-size: 10px;
@@ -152,7 +156,7 @@ $col-count: 8;
   display: block;
 }
 
-.MedicationDay.hover, .CatchupDay.hover {
+.past_day.hover {
 
   .dose {
     background: #8F4C5B;

@@ -65,6 +65,7 @@ class MedicationDayController extends Spine.Module
 
     @el.click (e) =>
       t = $(e.currentTarget);
+      return if t.hasClass('future_day')
       unless t.hasClass('missed')
         if $('.CatchupDay.inactive').length==0
           alert "Cannot miss anymore days, please restart phase"

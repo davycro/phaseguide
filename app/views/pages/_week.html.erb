@@ -6,7 +6,7 @@
     Week #<%= index+1 %>
   </div>
   <%- week.days.each do |day| -%>
-    <div class="<%= day.class %> day <%= 'inactive' if week.class==CatchupWeek %>" data-date="<%= day.date.to_formatted_s(:short) %>">
+    <div class="<%= day.class %> day <%= 'inactive' if week.class==CatchupWeek %> <%= 'future_day' if day.date > Date.today %> <%= 'past_day' if day.date <= Date.today %>" data-date="<%= day.date.to_formatted_s(:short) %>">
       <div class="day_label">
         <%= day.date.to_formatted_s(:short) %>
       </div>
