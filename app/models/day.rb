@@ -14,8 +14,8 @@ class Day
   end
 
   def dose_status
-    if @date < Date.today
-      return "Taken"
+    if @date <= Date.today
+      return "Completed"
     else
       return "Pending"
     end

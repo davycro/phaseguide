@@ -27,11 +27,17 @@ $purple-page-header: #8F4C5B;
   .nav-pills {
     > li {
       float: left;
-      border-top: 2px solid white;
 
       // Links rendered as pills
       > a {
         border-radius: 0px;
+        color: #d1d1d1;
+        border-top: 2px solid #8F4C5B;
+        &:hover {
+          background: #8F4C5B;
+          color: white;
+          // border-top: 2px solid white;
+        }
       }
       + li {
         margin-left: 2px;
@@ -42,6 +48,7 @@ $purple-page-header: #8F4C5B;
         &,
         &:hover,
         &:focus {
+          border-top: 2px solid white;
           color: white;
           background: $purple-page-header; 
         }
@@ -55,11 +62,6 @@ $purple-page-header: #8F4C5B;
   padding-top: 24px;
 }
 
-
-a, a:hover {
-  color: #8F4C5B;
-}
-
 $col-width: 100px;
 $col-height: 75px;
 $col-count: 8;
@@ -68,7 +70,10 @@ $col-count: 8;
   margin-bottom: 12px;
 }
 
-
+.Schedule {
+  width: 920px;
+  overflow: hidden;
+}
 .week {
   @include clearfix;
   margin-bottom: 24px;
@@ -119,6 +124,9 @@ $col-count: 8;
     font-style: italic;
     font-size: 10px;
     margin-bottom: 3px;
+    .taken {
+      color: #4f1091;
+    }
   }
   .dose_contents {
     font-size: 8px;
@@ -145,7 +153,7 @@ $col-count: 8;
   .dose {
     background: #8F4C5B;
     color: white;
-    .dose_contents {
+    .dose_contents, .taken {
       color: white;
     }
   }

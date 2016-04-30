@@ -68,10 +68,9 @@ class MedicationDayController extends Spine.Module
       unless t.hasClass('missed')
         if $('.CatchupDay.inactive').length==0
           alert "Cannot miss anymore days, please restart phase"
-          return
-
-        $(e.currentTarget).addClass 'missed'
-        @scheduleController.addMissedDose();
+        else
+          $(e.currentTarget).addClass 'missed'
+          @scheduleController.addMissedDose();
       else
         t.removeClass 'missed'
         @scheduleController.removeMissedDose();

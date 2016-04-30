@@ -15,7 +15,7 @@
         <div class='dose'>
           <div class="dose_label">Dose #<%= day.dose_number %></div>
           <div class="dose_status">
-            <span class="dose_taken_text"><%= day.dose_status %></span>
+            <span class="dose_taken_text <%= 'taken' if day.date<=Date.today %>"><%= day.dose_status %></span>
             <span class="missed_dose_text">Missed</span>
           </div>
           <div class="dose_contents"><%= day.dose_contents %></div>
