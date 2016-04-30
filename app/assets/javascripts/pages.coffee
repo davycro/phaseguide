@@ -31,8 +31,11 @@ class ScheduleController extends Spine.Module
     day = $('.CatchupDay.active:last');
     day.removeClass 'active'
     day.addClass 'inactive'
+    # deactivate downstream days
     $('.CatchupDay.active:last ~ .day').addClass('inactive').removeClass('active')
-    if day.siblings('.active').length==0
+
+    if day.siblings('.CatchupDay.active').length==0 # true when no more days in week
+      day.siblings('.day').addClass('inactive').removeClass('active')
       day.parent().removeClass('active')
     @missedDoseCount -= 1
     @takenDoseCount += 1
