@@ -79,7 +79,7 @@ class Schedule
     stop_date = Date.today
     days.each do |day|
       dc += day.dose_count
-      if day.date > stop_date
+      if day.date >= stop_date
         return dc
       end
     end
