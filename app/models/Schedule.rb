@@ -22,6 +22,24 @@ class Schedule
     4.times do |i|
       @catchup_weeks << CatchupWeek.new(self.last_date+1.day+(i*7).days)
     end
+
+    # update dose number for medication days
+    @dose_number = 1
+    days.each do |day|
+      if day.class==MedicationDay
+        day.dose_number = @dose_number
+        @dose_number += 1
+      end
+    end
+
+    # update dose number for catchup days
+    dn = 1
+    catchup_days.each do |day|
+      if day.class==CatchupDay
+        day.dose_number = dn
+        dn += 1
+      end
+    end
   end
 
   def last_date
@@ -46,6 +64,10 @@ class Schedule
 
   def days
     weeks.map { |w| w.days }.flatten
+  end
+
+  def catchup_days
+    catchup_weeks.map { |w| w.days }.flatten
   end
 
   def dose_count

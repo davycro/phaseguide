@@ -13,52 +13,13 @@
 
   <div class="Schedule">
     <%- @schedule.weeks.each_with_index do |week, index| -%>
-      <div class="<%= week.class %> week">
-        <div class="week_label">
-          Week #<%= index+1 %>
-        </div>
-        <%- week.days.each do |day| -%>
-          <div class="<%= day.class %> day">
-            <%= day.date.to_formatted_s(:short) %>
-
-            <%- if day.class==MedicationDay %>
-              <div class="dose_taken_text">
-                <label class='label label-primary'>Take Meds</label>
-              </div>
-              <div class="missed_dose_text">MISSED!</div>
-            <% end -%>
-
-            <%- if day.class==HoldDay %>
-              <p>Hold</p>
-            <% end -%>
-          </div>
-        <% end -%>
-      </div>
+      <%= render :partial => 'week', :locals => {week: week, index: index} %>
     <% end -%>
 
     <%- @schedule.catchup_weeks.each_with_index do |week, index| -%>
-      <div class="<%= week.class %> week">
-        <div class="week_label">
-          Makeup Week #<%= index+1 %>
-        </div>
-        <%- week.days.each do |day| -%>
-          <div class="<%= day.class %> day inactive">
-            <%= day.date.to_formatted_s(:short) %>
-
-            <%- if day.class==CatchupDay -%>
-              <div class="dose_taken_text">
-                <label class='label label-info'>Makeup</label>
-              </div>
-              <div class="missed_dose_text">MISSED!</div>
-            <% end -%>
-
-            <%- if day.class==HoldDay %>
-              <p>Hold</p>
-            <% end -%>
-          </div>
-        <% end -%>
-      </div>
+      <%= render :partial => 'week', :locals => {week: week, index: index} %>
     <% end -%>
+
   </div>
 
 </div>
