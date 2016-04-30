@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get 'initial_phase' => 'pages#initial_phase'
   get 'continuation_phase' => 'pages#continuation_phase'
+  get 'about' => 'pages#about'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

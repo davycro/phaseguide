@@ -54,6 +54,10 @@ $purple-page-header: #8F4C5B;
         }
       }
     }
+
+    > li.right {
+      float: right;
+    }
   }
 
 }
