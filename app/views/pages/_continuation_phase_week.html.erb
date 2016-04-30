@@ -1,0 +1,41 @@
+<div class="<%= week.class %> week">
+  <div class="week_label">
+    <%- if week.class==SevenDoseCatchupWeek %>
+      Makeup 
+    <% end -%>
+    Week #<%= index+1 %>
+  </div>
+  <%- week.days.each do |day| -%>
+    <div class="<%= day.class %> day <%= 'inactive' if week.class==SevenDoseCatchupWeek %>" data-date="<%= day.date.to_formatted_s(:short) %>">
+      <div class="day_label">
+        <%= day.date.to_formatted_s(:short) %>
+      </div>
+
+      <%- if day.class==MedicationDay %>
+        <div class='dose'>
+          <div class="dose_label">Dose #<%= day.dose_number %></div>
+          <div class="dose_status">
+            <span class="dose_taken_text <%= 'taken' if day.date<=Date.today %>"><%= day.dose_status %></span>
+            <span class="missed_dose_text">Missed</span>
+          </div>
+          <div class="dose_contents">Isoniazid, Rifampin</div>
+        </div>
+      <% end -%>
+
+      <%- if day.class==CatchupDay %>
+        <div class='dose'>
+          <div class="dose_label">Makeup Dose #<%= day.dose_number %></div>
+          <div class="dose_status">
+            <span class="dose_taken_text"><%= day.dose_status %></span>
+            <span class="missed_dose_text">Missed</span>
+          </div>
+          <div class="dose_contents"><%= day.dose_contents %></div>
+        </div>
+      <% end -%>
+
+      <%- if day.class==HoldDay %>
+        <div class='dose_empty'>No medication scheduled</div>
+      <% end -%>
+    </div>
+  <% end -%>
+</div>

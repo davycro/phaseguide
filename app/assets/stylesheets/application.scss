@@ -78,7 +78,7 @@ $col-count: 8;
   @include clearfix;
   margin-bottom: 24px;
 }
-.CatchupWeek {
+.CatchupWeek, .SevenDoseCatchupWeek {
   display: none;
 }
 .active {
