@@ -74,7 +74,7 @@ class Schedule
     weeks.map { |w| w.dose_count }.sum
   end
 
-  def dose_count_today
+  def taken_dose_count
     dc = 0
     stop_date = Date.today
     days.each do |day|

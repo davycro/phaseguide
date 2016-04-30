@@ -7,7 +7,8 @@ class ScheduleController extends Spine.Module
   
   constructor: ->
     @el = $('.Schedule')
-    @missedDoseCount = 0      
+    @missedDoseCount = 0
+    @takenDoseCount = parseInt @el.attr('data-taken-dose-count')      
 
   addMissedDose: (dayEl) ->
     # find first available catchup day
@@ -23,6 +24,7 @@ class ScheduleController extends Spine.Module
     # hide all days after catchupday
     $(sibs).removeClass('active').addClass('inactive')
     @missedDoseCount += 1
+    @takenDoseCount -= 1
     @updateStopDateText(); # must come after increment
 
   removeMissedDose: ->
@@ -33,7 +35,8 @@ class ScheduleController extends Spine.Module
     if day.siblings('.active').length==0
       day.parent().removeClass('active')
     @missedDoseCount -= 1
-    @updateStopDateText();
+    @takenDoseCount += 1
+    @updateStopDateText();    
 
   updateStopDateText: ->
     # get last date
@@ -42,6 +45,9 @@ class ScheduleController extends Spine.Module
     else
       d = $('.MedicationDay:last').attr('data-date');
     $('.stop_date_text').html("#{d}")
+
+    $('.taken_dose_count_text').html @takenDoseCount
+    $('.missed_dose_count_text').html @missedDoseCount
 
 class MedicationDayController extends Spine.Module
   @extend(Spine.Events)
