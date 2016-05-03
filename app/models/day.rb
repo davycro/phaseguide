@@ -10,7 +10,7 @@ class Day
   end
 
   def dose_contents
-    "Isoniazid Rifampin Pyridoxamine Ethambutol"
+    "Isoniazid Rifampin Pyrazinamide Ethambutol"
   end
 
   def dose_status
