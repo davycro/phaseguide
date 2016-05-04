@@ -62,17 +62,28 @@ $purple-page-header: #8F4C5B;
 
 }
 
-.page_body {
-  padding-top: 24px;
-}
-
 $col-width: 100px;
 $col-height: 75px;
 $col-count: 8;
 
+.page_body {
+  padding-top: 24px;
+}
+
+
+
 .schedule_header {
   margin-bottom: 12px;
+  label {
+    width: $col-width;
+    padding-right: 12px;
+  }
 }
+.StartDateSelector {
+
+}
+
+
 
 .Schedule {
   width: 920px;

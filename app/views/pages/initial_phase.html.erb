@@ -1,21 +1,7 @@
 <div class="container">
 
-  <div class="schedule_header">
+  <%= render :partial => 'schedule_header' %>
 
-    <div class="StartDateSelector">
-      <label>Start Date:</label>
-      <%= select_date(@start_date, order: [:month, :day, :year]) %>
-    </div>
-    Phase ends on:
-    <span class="stop_date_text"><%= @schedule.last_date.to_formatted_s(:weekday_and_mdy) %></span>.
-    <span class="taken_dose_count_text">
-      <%= @schedule.taken_dose_count %>
-    </span>
-    of <%= @schedule.dose_count %> doses taken.
-    <span class="missed_dose_count_text">0</span> doses missed.
-
-    
-  </div>
 
   <div class="Schedule" data-taken-dose-count="<%= @schedule.taken_dose_count %>">
     <%- @schedule.weeks.each_with_index do |week, index| -%>

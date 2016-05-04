@@ -15,5 +15,6 @@ class PagesController < ApplicationController
       @start_date = Date.parse params[:start_date]
     end
     @phase = ContinuationPhase.new @start_date
+    @schedule = @phase # sham to make partials work
   end
 end
