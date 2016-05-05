@@ -1,9 +1,9 @@
 == README
 
-= Phase Guide helps providers calculate medication regimens for patients with active tuberculosis.
+=== Phase Guide helps providers calculate medication regimens for patients with active tuberculosis.
 
 It shows a patient's progress in a treatment schedule, calculates the amount of doses taken, and the amount that remain. If a patient misses a dose, then the schedule will be adjusted.
 
-= Who built this?
+=== Who built this?
 
 Phase Guide was built by David Crockett, a student at Dartmouth Medical School, during a clerkship in family medicine at the Tsèhootsooí Medical Center in the Navajo Nation. You may contact him by email at: David.M.Crockett.Med (at) Dartmouth.edu. He welcomes all comments and concerns, and would be psyched to hear from you!
